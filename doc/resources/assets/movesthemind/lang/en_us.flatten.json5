@@ -1,0 +1,8 @@
+{
+  hexdoc: {
+    movesthemind: {
+      title: "Moves the Mind Book",
+      description: "Moves the Mind addon for Hex Casting, adding Carpetmod Fakeplayer interop.",
+    },
+  }
+}
