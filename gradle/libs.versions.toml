@@ -25,6 +25,7 @@ forge = "1.20.1-47.2.0"
 forge-dependency = "47" # for mods.toml
 
 # mods
+fabric-carpet = "1.4.112"
 
 # 0.11.2-pre-701 corresponds to the build of 0.11.2 on CurseForge/Modrinth
 hexcasting = "0.11.2-pre-701"
@@ -58,6 +59,10 @@ modPublish = "0.5.1"
 asm = ["asm", "asm-analysis", "asm-commons", "asm-tree", "asm-util"]
 
 [libraries]
+#LIBRARATION!!!!
+fabric-carpet = { module = "maven.modrinth:carpet", name = "fabric-carpet", version.ref = "fabric-carpet" }
+
+
 kotlin-stdlib = { module="org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref="kotlin" }
 kotlin-fabric = { module="net.fabricmc:fabric-language-kotlin", version.ref="kotlin-fabric" }
 kotlin-forge  = { module="thedarkcolour:kotlinforforge", version.ref="kotlin-forge" }

@@ -36,6 +36,9 @@ dependencies {
 
     modImplementation(libs.kotlin.fabric)
 
+    // first time putting in a dependency!
+    modApi(libs.fabric.carpet)
+
     modApi(libs.architectury.fabric) {
         // Fix for the "two fabric loaders" loading crash
         exclude(group = "net.fabricmc", module = "fabric-loader")
