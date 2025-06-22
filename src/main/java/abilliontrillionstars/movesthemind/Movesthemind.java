@@ -1,5 +1,6 @@
 package abilliontrillionstars.movesthemind;
 
+import abilliontrillionstars.movesthemind.casting.MovesthemindPatterns;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ public class Movesthemind implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+		MovesthemindPatterns.register();
 
 		LOGGER.info("Hello Fabric world!");
 	}
