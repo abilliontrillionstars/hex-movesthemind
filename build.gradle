@@ -1,5 +1,5 @@
 plugins {
-	id("fabric-loom") version libs.versions.loom
+	id("fabric-loom") version "1.10-SNAPSHOT"
 	id("maven-publish")
 }
 
@@ -23,7 +23,6 @@ repositories {
 	maven { url = uri("https://maven.blamejared.com") }
 	maven { url = uri("https://maven.fabricmc.net/") }
 	maven { url = uri("https://maven.ladysnake.org/releases") } // Cardinal Components
-	maven { url = uri("https://maven.minecraftforge.net/") }
 	maven { url = uri("https://maven.parchmentmc.org") }
 	maven { url = uri("https://maven.shedaniel.me") }
 	maven { url = uri("https://maven.terraformersmc.com/releases") }
@@ -56,14 +55,9 @@ loom {
 
 }
 
-fabricApi {
-	configureDataGeneration {
-		client = true
-	}
-}
+fabricApi { configureDataGeneration {client = true} }
 
 dependencies {
-	// To change the versions see the gradle.properties file
 	minecraft("com.mojang:minecraft:${project.minecraft_version}")
 	mappings(loom.officialMojangMappings())
 
@@ -73,10 +67,7 @@ dependencies {
 	// first time putting in a dependency!
 	modApi(libs.fabric.carpet)
 
-	modApi(libs.hexcasting.fabric) {
-		// If not excluded here, calls a nonexistent method and crashes the dev client
-		exclude(module: "phosphor")
-	}
+	modApi(libs.hexcasting.fabric) {exclude(module: "phosphor")} // If not excluded here, calls a nonexistent method and crashes the dev client
 	// Hex Casting dependencies
 	// we use modLocalRuntime to add these to the development runtime, but not at compile time or for consumers of this project
 	modLocalRuntime(libs.paucal.fabric)
@@ -85,7 +76,6 @@ dependencies {
 	modLocalRuntime(libs.serializationHooks)
 	modLocalRuntime(libs.trinkets)
 	modLocalRuntime(libs.inline.fabric) { transitive = false }
-
 	modApi(libs.clothConfig.fabric) {exclude(group: "net.fabricmc.fabric-api") }
 	modImplementation(libs.modMenu)
 }
