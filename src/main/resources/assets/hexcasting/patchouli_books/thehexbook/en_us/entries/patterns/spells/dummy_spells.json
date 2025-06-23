@@ -113,6 +113,14 @@
       "input": "player",
       "output": "",
       "text": "movesthemind.page.spells.move/swap_hands"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:move/drop",
+      "anchor": "movesthemind:move/drop",
+      "input": "player",
+      "output": "",
+      "text": "movesthemind.page.spells.move/drop"
     }
   ]
 }
