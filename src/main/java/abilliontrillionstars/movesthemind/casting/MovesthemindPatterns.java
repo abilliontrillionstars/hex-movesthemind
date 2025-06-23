@@ -1,7 +1,9 @@
 package abilliontrillionstars.movesthemind.casting;
 
 import abilliontrillionstars.movesthemind.Movesthemind;
+import abilliontrillionstars.movesthemind.casting.actions.spells.OpDropAndRoll;
 import abilliontrillionstars.movesthemind.casting.actions.spells.OpMadeYouLook;
+import abilliontrillionstars.movesthemind.casting.actions.spells.OpWalkAMileInTheseLouisVuittons;
 import at.petrak.hexcasting.api.casting.ActionRegistryEntry;
 import at.petrak.hexcasting.api.casting.castables.Action;
 import at.petrak.hexcasting.api.casting.castables.OperationAction;
@@ -23,7 +25,10 @@ public class MovesthemindPatterns
             Registry.register(HexActions.REGISTRY, entry.getKey(), entry.getValue());
     }
 
-    public static final HexPattern LOOK = make("qaqqqwa", HexDir.NORTH_EAST, "move/look", OpMadeYouLook.INSTANCE);
+    public static final HexPattern LOOK = make("edeaqwa", HexDir.NORTH_WEST, "move/look", OpMadeYouLook.INSTANCE);
+    public static final HexPattern WALK = make("edeqd", HexDir.NORTH_WEST, "move/walk", OpWalkAMileInTheseLouisVuittons.INSTANCE);
+    public static final HexPattern DROP = make("edeaqe", HexDir.NORTH_WEST, "move/drop", OpDropAndRoll.INSTANCE);
+
 
 
     private static HexPattern make(String signature, HexDir dir, String name, Action act ) {

@@ -1,6 +1,7 @@
 plugins {
 	id("fabric-loom") version "1.10-SNAPSHOT"
 	id("maven-publish")
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 version = project.mod_version
@@ -80,6 +81,7 @@ dependencies {
 	modImplementation(libs.modMenu)
 
 	modImplementation(libs.kotlin.fabric)
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 processResources {
@@ -95,8 +97,6 @@ java {
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {
@@ -123,4 +123,7 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
+}
+kotlin {
+    jvmToolchain(17)
 }
