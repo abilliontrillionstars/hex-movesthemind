@@ -1,5 +1,6 @@
 package abilliontrillionstars.movesthemind.casting.actions.spells;
 
+import abilliontrillionstars.movesthemind.Movesthemind;
 import abilliontrillionstars.movesthemind.casting.JavaMishapThrower;
 import at.petrak.hexcasting.api.casting.OperatorUtils;
 import at.petrak.hexcasting.api.casting.ParticleSpray;
@@ -14,22 +15,18 @@ import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.api.casting.mishaps.MishapEntityTooFarAway;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import carpet.helpers.EntityPlayerActionPack;
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.StringReader;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
-import org.apache.logging.log4j.core.jmx.Server;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class OpWalkAMileInTheseLouisVuittons implements SpellAction
+public class OpSetSneak implements SpellAction
 {
-    public static final Action INSTANCE = new OpWalkAMileInTheseLouisVuittons();
+    public static final Action INSTANCE = new OpSetSneak();
 
     @Override
     public int getArgc() { return 2; }
@@ -43,8 +40,8 @@ public class OpWalkAMileInTheseLouisVuittons implements SpellAction
         {
             JavaMishapThrower.throwMishap(new MishapEntityTooFarAway(target));
         }
-        int walking = OperatorUtils.getInt(args, 1, getArgc());
-        return new SpellAction.Result(new OpWalkAMileInTheseLouisVuittons.Spell(target, walking),
+        boolean doesSneak = OperatorUtils.getBool(args, 1, getArgc());
+        return new SpellAction.Result(new OpSetSneak.Spell(target, doesSneak),
                 MediaConstants.DUST_UNIT,
                 List.of(ParticleSpray.burst(target.position().add(0.0, target.getEyeHeight() / 2.0, 0.0), 1.0, 10)),
                 1);
@@ -63,8 +60,8 @@ public class OpWalkAMileInTheseLouisVuittons implements SpellAction
     private class Spell implements RenderedSpell
     {
         private ServerPlayer target;
-        private int walking;
-        public Spell(ServerPlayer target, int walking) {this.target = target; this.walking = walking;}
+        private boolean doesSneak;
+        public Spell(ServerPlayer target, boolean doesSneak) {this.target = target; this.doesSneak = doesSneak;}
 
         @Override
         public void cast(@NotNull CastingEnvironment env)
@@ -73,18 +70,7 @@ public class OpWalkAMileInTheseLouisVuittons implements SpellAction
             CommandSourceStack sourceStack = server.createCommandSourceStack();
             String compName = target.getName().toString();
             String username = compName.substring(compName.indexOf('{')+1, compName.length()-1);
-            switch(walking)
-            {
-                case 0:
-                    server.getCommands().performPrefixedCommand(sourceStack, "player " + username + " stop");
-                    break;
-                case -1:
-                    server.getCommands().performPrefixedCommand(sourceStack, "player " + username + " move backward");
-                    break;
-                case 1:
-                    server.getCommands().performPrefixedCommand(sourceStack, "player " + username + " move forward");
-                    break;
-            }
+            server.getCommands().performPrefixedCommand(sourceStack, "player "+username+(doesSneak ? " sneak":" unsneak"));
         }
 
         @Override

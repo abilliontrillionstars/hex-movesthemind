@@ -49,7 +49,7 @@ public class OpMadeYouLook implements SpellAction
         }
         Vec3 dir = OperatorUtils.getVec3(args, 1, getArgc());
         return new Result(new Spell(target, dir),
-                MediaConstants.DUST_UNIT,
+                MediaConstants.DUST_UNIT / 10,
                 List.of(ParticleSpray.burst(target.position().add(0.0, target.getEyeHeight() / 2.0, 0.0), 1.0, 10)),
                 1);
     }

@@ -15,7 +15,9 @@ import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.api.casting.mishaps.MishapEntityTooFarAway;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import carpet.helpers.EntityPlayerActionPack;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -64,6 +66,12 @@ public class OpDropAndRoll implements SpellAction
         {
             EntityPlayerActionPack actor = new EntityPlayerActionPack(this.target);
             actor.drop(target.getInventory().selected, false);
+            // well, that'd didn't work. let's try a ruder method.
+            MinecraftServer server = target.getServer();
+            CommandSourceStack sourceStack = server.createCommandSourceStack();
+            String compName = target.getName().toString();
+            String username = compName.substring(compName.indexOf('{')+1, compName.length()-1);
+            server.getCommands().performPrefixedCommand(sourceStack, "player "+username+" drop");
         }
 
         @Override

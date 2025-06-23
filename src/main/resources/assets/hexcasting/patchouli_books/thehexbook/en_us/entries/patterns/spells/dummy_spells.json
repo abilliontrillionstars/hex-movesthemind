@@ -1,0 +1,118 @@
+{
+  "name": "movesthemind.entry.spells",
+  "category": "hexcasting:patterns/spells",
+  "icon": "minecraft:player_head",
+  "sortnum": 0,
+  "advancement": "hexcasting:root",
+  "read_by_default": false,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "movesthemind.page.spells.0"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:move/stopall",
+      "anchor": "movesthemind:move/stopall",
+      "input": "player",
+      "output": "",
+      "text": "movesthemind.page.spells.move/stopall"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:create",
+      "anchor": "movesthemind:create",
+      "input": "vec",
+      "output": "",
+      "text": "movesthemind.page.spells.create"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:destroy",
+      "anchor": "movesthemind:destroy",
+      "input": "player",
+      "output": "",
+      "text": "movesthemind.page.spells.destroy"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:move/walk",
+      "anchor": "movesthemind:move/walk",
+      "input": "player, num",
+      "output": "",
+      "text": "movesthemind.page.spells.move/walk"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:move/strafe",
+      "anchor": "movesthemind:move/strafe",
+      "input": "player, num",
+      "output": "",
+      "text": "movesthemind.page.spells.move/strafe"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:move/look",
+      "anchor": "movesthemind:move/look",
+      "input": "player, vec",
+      "output": "",
+      "text": "movesthemind.page.spells.move/look"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:move/jump",
+      "anchor": "movesthemind:move/jump",
+      "input": "player",
+      "output": "",
+      "text": "movesthemind.page.spells.move/jump"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:move/sneak",
+      "anchor": "movesthemind:move/sneak",
+      "input": "player, bool",
+      "output": "",
+      "text": "movesthemind.page.spells.move/sneak"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:move/sprint",
+      "anchor": "movesthemind:move/sprint",
+      "input": "player, bool",
+      "output": "",
+      "text": "movesthemind.page.spells.move/sprint"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:move/use",
+      "anchor": "movesthemind:move/use",
+      "input": "player, num",
+      "output": "",
+      "text": "movesthemind.page.spells.move/use"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:move/attack",
+      "anchor": "movesthemind:move/attack",
+      "input": "player, num",
+      "output": "",
+      "text": "movesthemind.page.spells.move/attack"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:move/hotbar",
+      "anchor": "movesthemind:move/hotbar",
+      "input": "player, num",
+      "output": "",
+      "text": "movesthemind.page.spells.move/hotbar"
+    },
+    {
+      "type": "hexcasting:pattern",
+      "op_id": "movesthemind:move/swap_hands",
+      "anchor": "movesthemind:move/swap_hands",
+      "input": "player",
+      "output": "",
+      "text": "movesthemind.page.spells.move/swap_hands"
+    }
+  ]
+}
