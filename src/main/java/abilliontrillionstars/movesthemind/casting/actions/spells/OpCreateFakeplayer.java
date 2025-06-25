@@ -1,5 +1,6 @@
 package abilliontrillionstars.movesthemind.casting.actions.spells;
 
+import abilliontrillionstars.movesthemind.casting.FakeplayerUtils;
 import abilliontrillionstars.movesthemind.casting.JavaMishapThrower;
 import at.petrak.hexcasting.api.casting.OperatorUtils;
 import at.petrak.hexcasting.api.casting.ParticleSpray;
@@ -37,27 +38,16 @@ public class OpCreateFakeplayer implements SpellAction
     public @NotNull SpellAction.Result executeWithUserdata(@NotNull List<? extends Iota> args, @NotNull CastingEnvironment env, @NotNull CompoundTag tags)
     {
         Vec3 pos = OperatorUtils.getVec3(args, 0, getArgc());
-        try { env.assertVecInRange(pos); }
-        catch(MishapBadLocation e)
-        {
+        if(!env.isVecInAmbit(pos))
             JavaMishapThrower.throwMishap(new MishapBadLocation(pos, "too_far"));
-        }
         Entity caster = env.getCastingEntity();
         if(!(caster instanceof ServerPlayer))
             JavaMishapThrower.throwMishap(new MishapBadCaster());
-
-        String username = caster.getName().toString();
-        username = username.substring(username.indexOf('{')+1, username.length()-1);
-        while(username.length() < 16)
-            username = username.concat("_"); // pad the string to 16 characters
-
-        if(username.substring(12,16).equals("_bot"))
+        String username = FakeplayerUtils.getUsernameString((ServerPlayer) caster);
+         if(FakeplayerUtils.getFakeName(username).equals(username))
             JavaMishapThrower.throwMishap(new MishapBadCaster()); // no grey-goo! bad fakeplayer! bad!
 
-        username = username.substring(12,16).concat("_bot");
-
-
-        return new SpellAction.Result(new OpCreateFakeplayer.Spell(pos, username),
+        return new SpellAction.Result(new OpCreateFakeplayer.Spell(pos, FakeplayerUtils.getFakeName(username)),
                 MediaConstants.CRYSTAL_UNIT,
                 List.of(ParticleSpray.burst(pos, 1.0, 10)),
                 1);
@@ -84,9 +74,8 @@ public class OpCreateFakeplayer implements SpellAction
         {
             MinecraftServer server = env.getWorld().getServer();
             CommandSourceStack sourceStack = server.createCommandSourceStack();
-
             server.getCommands().performPrefixedCommand(sourceStack, "player "+name+" spawn at "+pos.x+" "+pos.y+" "+pos.z);
-            server.getCommands().performPrefixedCommand(sourceStack, "gamemode "+name+" survival");
+            server.getCommands().performPrefixedCommand(sourceStack, "gamemode survival "+name);
         }
 
         @Override
