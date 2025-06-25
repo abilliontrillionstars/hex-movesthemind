@@ -1,5 +1,6 @@
 package abilliontrillionstars.movesthemind.casting.actions.spells;
 
+import abilliontrillionstars.movesthemind.Movesthemind;
 import abilliontrillionstars.movesthemind.casting.FakeplayerUtils;
 import abilliontrillionstars.movesthemind.casting.JavaMishapThrower;
 import at.petrak.hexcasting.api.casting.OperatorUtils;
@@ -74,10 +75,15 @@ public class OpCreateFakeplayer implements SpellAction
         {
             MinecraftServer server = env.getWorld().getServer();
             CommandSourceStack sourceStack = server.createCommandSourceStack();
-            server.getCommands().performPrefixedCommand(sourceStack, "player "+name+" spawn at "+pos.x+" "+pos.y+" "+pos.z);
-            server.getCommands().performPrefixedCommand(sourceStack, "gamemode survival "+name);
+            String dim = env.getWorld().dimension().toString();
+            dim = dim.substring(dim.lastIndexOf(' ')+1, dim.indexOf(']'));
+            String gamemode = null;
+            if(env.getCaster().gameMode.isCreative())
+                gamemode = "creative";
+            else gamemode = "survival";
+            server.getCommands().performPrefixedCommand(sourceStack, "player " + name + " spawn at " + pos.x + " " + pos.y + " " + pos.z
+                    + " facing 0 0 in "+dim+" in "+gamemode);
         }
-
         @Override
         public @Nullable CastingImage cast(@NotNull CastingEnvironment env, @NotNull CastingImage castingImage)
         {
