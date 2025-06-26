@@ -1,5 +1,7 @@
 package abilliontrillionstars.movesthemind.casting.actions.spells;
 
+import abilliontrillionstars.movesthemind.Movesthemind;
+import abilliontrillionstars.movesthemind.casting.FakeplayerUtils;
 import abilliontrillionstars.movesthemind.casting.JavaMishapThrower;
 import at.petrak.hexcasting.api.casting.OperatorUtils;
 import at.petrak.hexcasting.api.casting.ParticleSpray;
@@ -14,6 +16,7 @@ import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadLocation;
 import at.petrak.hexcasting.api.misc.MediaConstants;
+import at.petrak.hexcasting.fabric.FabricHexConfig;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
@@ -36,12 +39,16 @@ public class OpCreateFakeplayer implements SpellAction
     public @NotNull SpellAction.Result executeWithUserdata(@NotNull List<? extends Iota> args, @NotNull CastingEnvironment env, @NotNull CompoundTag tags)
     {
         Vec3 pos = OperatorUtils.getVec3(args, 0, getArgc());
-        try { env.assertVecInRange(pos); }
-        catch(MishapBadLocation e)
-        {
+        if(!env.isVecInAmbit(pos))
             JavaMishapThrower.throwMishap(new MishapBadLocation(pos, "too_far"));
-        }
-        return new SpellAction.Result(new OpCreateFakeplayer.Spell(pos),
+        Entity caster = env.getCastingEntity();
+        if(!(caster instanceof ServerPlayer))
+            JavaMishapThrower.throwMishap(new MishapBadCaster());
+        String username = FakeplayerUtils.getUsernameString((ServerPlayer) caster);
+         if(FakeplayerUtils.getFakeName(username).equals(username))
+            JavaMishapThrower.throwMishap(new MishapBadCaster()); // no grey-goo! bad fakeplayer! bad!
+
+        return new SpellAction.Result(new OpCreateFakeplayer.Spell(pos, FakeplayerUtils.getFakeName(username)),
                 MediaConstants.CRYSTAL_UNIT,
                 List.of(ParticleSpray.burst(pos, 1.0, 10)),
                 1);
@@ -60,20 +67,23 @@ public class OpCreateFakeplayer implements SpellAction
     private class Spell implements RenderedSpell
     {
         private Vec3 pos;
-        public Spell(Vec3 pos) {this.pos = pos;}
+        private String name;
+        public Spell(Vec3 pos, String name) {this.pos = pos; this.name = name;}
 
         @Override
         public void cast(@NotNull CastingEnvironment env)
         {
             MinecraftServer server = env.getWorld().getServer();
             CommandSourceStack sourceStack = server.createCommandSourceStack();
-            String compName = env.getCaster().getName().toString();
-            String username = compName.substring(compName.indexOf('{')+1, compName.length()-1);
-            // TODO: make this pad the name to 16 characters to distinguish from any real player
-            if(username.contains("_bot")) return; // no grey-goo! bad fakeplayer! bad!
-            server.getCommands().performPrefixedCommand(sourceStack, "player "+username+"_bot spawn at "+pos.x+" "+pos.y+" "+pos.z);
+            String dim = env.getWorld().dimension().toString();
+            dim = dim.substring(dim.lastIndexOf(' ')+1, dim.indexOf(']'));
+            String gamemode = null;
+            if(env.getCaster().gameMode.isCreative())
+                gamemode = "creative";
+            else gamemode = "survival";
+            server.getCommands().performPrefixedCommand(sourceStack, "player " + name + " spawn at " + pos.x + " " + pos.y + " " + pos.z
+                    + " facing 0 0 in "+dim+" in "+gamemode);
         }
-
         @Override
         public @Nullable CastingImage cast(@NotNull CastingEnvironment env, @NotNull CastingImage castingImage)
         {

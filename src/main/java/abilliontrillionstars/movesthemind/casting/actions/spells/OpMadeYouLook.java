@@ -1,6 +1,7 @@
 package abilliontrillionstars.movesthemind.casting.actions.spells;
 
 import abilliontrillionstars.movesthemind.Movesthemind;
+import abilliontrillionstars.movesthemind.casting.FakeplayerUtils;
 import abilliontrillionstars.movesthemind.casting.JavaMishapThrower;
 import at.petrak.hexcasting.api.casting.OperatorUtils;
 import at.petrak.hexcasting.api.casting.ParticleSpray;
@@ -12,8 +13,10 @@ import at.petrak.hexcasting.api.casting.eval.OperationResult;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage;
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.Iota;
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity;
 import at.petrak.hexcasting.api.casting.mishaps.MishapEntityTooFarAway;
+import at.petrak.hexcasting.api.casting.mishaps.MishapOthersName;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import carpet.helpers.EntityPlayerActionPack;
 import net.minecraft.nbt.CompoundTag;
@@ -42,11 +45,13 @@ public class OpMadeYouLook implements SpellAction
     public @NotNull Result executeWithUserdata(@NotNull List<? extends Iota> args, @NotNull CastingEnvironment env, @NotNull CompoundTag tags)
     {
         ServerPlayer target = OperatorUtils.getPlayer(args, 0, getArgc());
-        try { env.assertEntityInRange(target); }
-        catch(MishapEntityTooFarAway e)
-        {
+        if(!env.isEntityInRange(target))
             JavaMishapThrower.throwMishap(new MishapEntityTooFarAway(target));
-        }
+        Entity caster = env.getCastingEntity();
+        if(!(caster instanceof ServerPlayer))
+            JavaMishapThrower.throwMishap(new MishapBadCaster());
+        if(!FakeplayerUtils.canBid((ServerPlayer) caster, target))
+            JavaMishapThrower.throwMishap(new MishapOthersName(target));
         Vec3 dir = OperatorUtils.getVec3(args, 1, getArgc());
         return new Result(new Spell(target, dir),
                 MediaConstants.DUST_UNIT / 10,

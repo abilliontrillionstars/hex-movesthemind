@@ -1,5 +1,6 @@
 package abilliontrillionstars.movesthemind.casting.actions.spells;
 
+import abilliontrillionstars.movesthemind.casting.FakeplayerUtils;
 import abilliontrillionstars.movesthemind.casting.JavaMishapThrower;
 import at.petrak.hexcasting.api.casting.OperatorUtils;
 import at.petrak.hexcasting.api.casting.ParticleSpray;
@@ -11,12 +12,15 @@ import at.petrak.hexcasting.api.casting.eval.OperationResult;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage;
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.Iota;
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
 import at.petrak.hexcasting.api.casting.mishaps.MishapEntityTooFarAway;
+import at.petrak.hexcasting.api.casting.mishaps.MishapOthersName;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,11 +37,13 @@ public class OpStrafeInAforementionedLouisVuittons implements SpellAction
     public @NotNull SpellAction.Result executeWithUserdata(@NotNull List<? extends Iota> args, @NotNull CastingEnvironment env, @NotNull CompoundTag tags)
     {
         ServerPlayer target = OperatorUtils.getPlayer(args, 0, getArgc());
-        try { env.assertEntityInRange(target); }
-        catch(MishapEntityTooFarAway e)
-        {
+        if(!env.isEntityInRange(target))
             JavaMishapThrower.throwMishap(new MishapEntityTooFarAway(target));
-        }
+        Entity caster = env.getCastingEntity();
+        if(!(caster instanceof ServerPlayer))
+            JavaMishapThrower.throwMishap(new MishapBadCaster());
+        if(!FakeplayerUtils.canBid((ServerPlayer) caster, target))
+            JavaMishapThrower.throwMishap(new MishapOthersName(target));
         int walking = OperatorUtils.getInt(args, 1, getArgc());
         return new SpellAction.Result(new OpStrafeInAforementionedLouisVuittons.Spell(target, walking),
                 MediaConstants.DUST_UNIT,
@@ -66,8 +72,7 @@ public class OpStrafeInAforementionedLouisVuittons implements SpellAction
         {
             MinecraftServer server = target.getServer();
             CommandSourceStack sourceStack = server.createCommandSourceStack();
-            String compName = target.getName().toString();
-            String username = compName.substring(compName.indexOf('{')+1, compName.length()-1);
+            String username = FakeplayerUtils.getUsernameString(target);
             switch(walking)
             {
                 case 0:

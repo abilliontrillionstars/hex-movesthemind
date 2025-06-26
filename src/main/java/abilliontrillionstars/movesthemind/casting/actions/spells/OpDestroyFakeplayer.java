@@ -1,5 +1,6 @@
 package abilliontrillionstars.movesthemind.casting.actions.spells;
 
+import abilliontrillionstars.movesthemind.casting.FakeplayerUtils;
 import abilliontrillionstars.movesthemind.casting.JavaMishapThrower;
 import at.petrak.hexcasting.api.casting.OperatorUtils;
 import at.petrak.hexcasting.api.casting.ParticleSpray;
@@ -11,10 +12,7 @@ import at.petrak.hexcasting.api.casting.eval.OperationResult;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage;
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.Iota;
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadEntity;
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadLocation;
-import at.petrak.hexcasting.api.casting.mishaps.MishapEntityTooFarAway;
+import at.petrak.hexcasting.api.casting.mishaps.*;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.nbt.CompoundTag;
@@ -37,11 +35,13 @@ public class OpDestroyFakeplayer implements SpellAction
     public @NotNull SpellAction.Result executeWithUserdata(@NotNull List<? extends Iota> args, @NotNull CastingEnvironment env, @NotNull CompoundTag tags)
     {
         ServerPlayer player = OperatorUtils.getPlayer(args, 0, getArgc());
-        try { env.assertEntityInRange(player); }
-        catch(MishapEntityTooFarAway e)
-        {
+        if(!env.isEntityInRange(player))
             JavaMishapThrower.throwMishap(new MishapEntityTooFarAway(player));
-        }
+        Entity caster = env.getCastingEntity();
+        if(!(caster instanceof ServerPlayer))
+            JavaMishapThrower.throwMishap(new MishapBadCaster());
+        if(!FakeplayerUtils.canBid((ServerPlayer) caster, player))
+            JavaMishapThrower.throwMishap(new MishapOthersName(player));
         return new SpellAction.Result(new OpDestroyFakeplayer.Spell(player),
                 MediaConstants.DUST_UNIT,
                 List.of(ParticleSpray.burst(player.position().add(0.0, player.getEyeHeight() / 2.0, 0.0), 1.0, 10)),
@@ -60,7 +60,7 @@ public class OpDestroyFakeplayer implements SpellAction
 
     private class Spell implements RenderedSpell
     {
-        private ServerPlayer player;
+        private final ServerPlayer player;
         public Spell(ServerPlayer player) {this.player = player;}
 
         @Override
@@ -68,10 +68,7 @@ public class OpDestroyFakeplayer implements SpellAction
         {
             MinecraftServer server = env.getWorld().getServer();
             CommandSourceStack sourceStack = server.createCommandSourceStack();
-            String compName = player.getName().toString();
-            String username = compName.substring(compName.indexOf('{')+1, compName.length()-1);
-            if(!username.contains("_bot")) return;
-            server.getCommands().performPrefixedCommand(sourceStack, "player "+username+" kill");
+            server.getCommands().performPrefixedCommand(sourceStack, "player "+FakeplayerUtils.getUsernameString(player)+" kill");
         }
 
         @Override
