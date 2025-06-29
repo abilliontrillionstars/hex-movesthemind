@@ -15,8 +15,11 @@ import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadLocation;
+import at.petrak.hexcasting.api.casting.mishaps.MishapOthersName;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.fabric.FabricHexConfig;
+import carpet.patches.EntityPlayerMPFake;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
@@ -26,6 +29,8 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class OpCreateFakeplayer implements SpellAction
@@ -39,16 +44,25 @@ public class OpCreateFakeplayer implements SpellAction
     public @NotNull SpellAction.Result executeWithUserdata(@NotNull List<? extends Iota> args, @NotNull CastingEnvironment env, @NotNull CompoundTag tags)
     {
         Vec3 pos = OperatorUtils.getVec3(args, 0, getArgc());
+        // ambit check
         if(!env.isVecInAmbit(pos))
             JavaMishapThrower.throwMishap(new MishapBadLocation(pos, "too_far"));
         Entity caster = env.getCastingEntity();
+        // shouldn't be cast playerless
         if(!(caster instanceof ServerPlayer))
             JavaMishapThrower.throwMishap(new MishapBadCaster());
-        String username = FakeplayerUtils.getUsernameString((ServerPlayer) caster);
-         if(FakeplayerUtils.getFakeName(username).equals(username))
-            JavaMishapThrower.throwMishap(new MishapBadCaster()); // no grey-goo! bad fakeplayer! bad!
+        // no grey-goo! bad fakeplayer! bad!
+        if(caster instanceof EntityPlayerMPFake)
+            JavaMishapThrower.throwMishap(new MishapBadCaster());
 
-        return new SpellAction.Result(new OpCreateFakeplayer.Spell(pos, FakeplayerUtils.getFakeName(username)),
+        String username = FakeplayerUtils.getFakeName(FakeplayerUtils.getUsernameString((ServerPlayer) caster));
+        MinecraftServer server = env.getWorld().getServer();
+        // fail early if the player exists already
+        ServerPlayer player = server.getPlayerList().getPlayerByName(username);
+        if(player != null)
+            JavaMishapThrower.throwMishap(new MishapOthersName(player));
+
+        return new SpellAction.Result(new OpCreateFakeplayer.Spell(pos,username),
                 MediaConstants.CRYSTAL_UNIT,
                 List.of(ParticleSpray.burst(pos, 1.0, 10)),
                 1);
@@ -83,6 +97,9 @@ public class OpCreateFakeplayer implements SpellAction
             else gamemode = "survival";
             server.getCommands().performPrefixedCommand(sourceStack, "player " + name + " spawn at " + pos.x + " " + pos.y + " " + pos.z
                     + " facing 0 0 in "+dim+" in "+gamemode);
+            // set the origin of a player if it's installed
+            if(FabricLoader.getInstance().isModLoaded("origins"))
+                server.getCommands().performPrefixedCommand(sourceStack, "origin set "+name+" origins:origin origins:human");
         }
         @Override
         public @Nullable CastingImage cast(@NotNull CastingEnvironment env, @NotNull CastingImage castingImage)
