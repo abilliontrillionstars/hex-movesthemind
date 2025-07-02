@@ -1,6 +1,5 @@
 package abilliontrillionstars.movesthemind.casting.actions.spells;
 
-import abilliontrillionstars.movesthemind.Movesthemind;
 import abilliontrillionstars.movesthemind.casting.FakeplayerUtils;
 import abilliontrillionstars.movesthemind.casting.JavaMishapThrower;
 import at.petrak.hexcasting.api.casting.OperatorUtils;
@@ -17,7 +16,6 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadLocation;
 import at.petrak.hexcasting.api.casting.mishaps.MishapOthersName;
 import at.petrak.hexcasting.api.misc.MediaConstants;
-import at.petrak.hexcasting.fabric.FabricHexConfig;
 import carpet.patches.EntityPlayerMPFake;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.commands.CommandSourceStack;
@@ -29,8 +27,6 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class OpCreateFakeplayer implements SpellAction
@@ -91,15 +87,15 @@ public class OpCreateFakeplayer implements SpellAction
             CommandSourceStack sourceStack = server.createCommandSourceStack();
             String dim = env.getWorld().dimension().toString();
             dim = dim.substring(dim.lastIndexOf(' ')+1, dim.indexOf(']'));
-            String gamemode = null;
+            String gamemode;
             if(env.getCaster().gameMode.isCreative())
                 gamemode = "creative";
             else gamemode = "survival";
             server.getCommands().performPrefixedCommand(sourceStack, "player " + name + " spawn at " + pos.x + " " + pos.y + " " + pos.z
                     + " facing 0 0 in "+dim+" in "+gamemode);
-            // set the origin of a player if it's installed
+            // set the origin of a player if it's installed (now suppressed from logs)
             if(FabricLoader.getInstance().isModLoaded("origins"))
-                server.getCommands().performPrefixedCommand(sourceStack, "origin set "+name+" origins:origin origins:human");
+                server.getCommands().performPrefixedCommand(sourceStack.withSuppressedOutput(), "origin set "+name+" origins:origin origins:human");
         }
         @Override
         public @Nullable CastingImage cast(@NotNull CastingEnvironment env, @NotNull CastingImage castingImage)

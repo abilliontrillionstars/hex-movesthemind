@@ -1,5 +1,6 @@
 package abilliontrillionstars.movesthemind.casting;
 
+import abilliontrillionstars.movesthemind.Movesthemind;
 import net.minecraft.server.level.ServerPlayer;
 
 public class FakeplayerUtils
@@ -7,20 +8,17 @@ public class FakeplayerUtils
     public static boolean canBid(ServerPlayer caster, ServerPlayer target)
     {
         String username = getUsernameString(caster);
-        String targetname = getUsernameString((target));
+        String targetname = getUsernameString(target);
         // let the owner of a fakeplayer control it TODO needs edited when adding polyamory
-        if(getFakeName(username).equals(targetname))
+        if(getFakeName(username).equals(targetname) || getFakeName(username).toLowerCase().equals(targetname))
             return true;
-        // let a fakeplayer control itself
-        if(caster.getStringUUID().equals(target.getStringUUID()))
-            return true;
-        return false;
+        // let a fakeplayer (or real player) control itself
+        return caster.getStringUUID().equals(target.getStringUUID());
     }
 
     public static String getFakeName(String username)
     {
         // this should return the same name when used with a fakeplayer's name
-
         while(username.length() < 16)
             username = username.concat("_"); // pad the string to 16 characters
         username = username.substring(0,12).concat("_bot");
