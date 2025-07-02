@@ -35,5 +35,9 @@
   "movesthemind.page.spells.move/attack" :  "Given 0, uses it continuously, such as eating or channeling, or in the case of Attack, mining. Given -1, uses or attacks once and stops.",
   "movesthemind.page.spells.move/hotbar" : "Takes a number from 1 to 9 inclusive, and instructs to select that slot in its toolbar.",
   "movesthemind.page.spells.move/swap_hands" :  "Instructs the creature to hand its mainhand item into its offhand, and vice versa.",
-  "movesthemind.page.spells.move/drop" : "Instructs the creature to drop the item or stack of items it holds in its main hand."
+  "movesthemind.page.spells.move/drop" : "Instructs the creature to drop the item or stack of items it holds in its main hand.",
+
+
+  "advancement.movesthemind:try_banish_self" : "I Don't Want to Live on this Planet Anymore",
+  "advancement.movesthemind:try_banish_self.desc" : "As a real player, try to cast Banish Creature on yourself."
 }

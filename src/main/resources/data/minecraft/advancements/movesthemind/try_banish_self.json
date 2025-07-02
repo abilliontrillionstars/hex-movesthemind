@@ -1,0 +1,22 @@
+{
+  "criteria": {
+    "dummy": {"trigger": "minecraft:impossible"}
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.movesthemind:try_banish_self.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "hexcasting:impetus/empty"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.movesthemind:try_banish_self"
+    }
+  },
+  "requirements": [],
+  "sends_telemetry_event": true
+}
