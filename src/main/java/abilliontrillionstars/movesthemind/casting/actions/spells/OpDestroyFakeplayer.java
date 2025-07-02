@@ -43,7 +43,7 @@ public class OpDestroyFakeplayer implements SpellAction
         if(!FakeplayerUtils.canBid((ServerPlayer) caster, player))
             JavaMishapThrower.throwMishap(new MishapOthersName(player));
         return new SpellAction.Result(new OpDestroyFakeplayer.Spell(player),
-                MediaConstants.DUST_UNIT,
+                MediaConstants.DUST_UNIT * 5,
                 List.of(ParticleSpray.burst(player.position().add(0.0, player.getEyeHeight() / 2.0, 0.0), 1.0, 10)),
                 1);
     }

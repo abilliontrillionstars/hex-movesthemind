@@ -48,7 +48,7 @@ public class OpSetSneak implements SpellAction
             JavaMishapThrower.throwMishap(new MishapOthersName(target));
         boolean doesSneak = OperatorUtils.getBool(args, 1, getArgc());
         return new SpellAction.Result(new OpSetSneak.Spell(target, doesSneak),
-                MediaConstants.DUST_UNIT,
+                MediaConstants.DUST_UNIT / 10,
                 List.of(ParticleSpray.burst(target.position().add(0.0, target.getEyeHeight() / 2.0, 0.0), 1.0, 10)),
                 1);
     }
