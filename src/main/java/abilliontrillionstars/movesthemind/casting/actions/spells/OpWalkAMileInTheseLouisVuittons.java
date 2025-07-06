@@ -52,7 +52,7 @@ public class OpWalkAMileInTheseLouisVuittons implements SpellAction
 
         int walking = OperatorUtils.getInt(args, 1, getArgc());
         return new SpellAction.Result(new OpWalkAMileInTheseLouisVuittons.Spell(target, walking),
-                MediaConstants.DUST_UNIT,
+                MediaConstants.DUST_UNIT / 10,
                 List.of(ParticleSpray.burst(target.position().add(0.0, target.getEyeHeight() / 2.0, 0.0), 1.0, 10)),
                 1);
     }

@@ -39,3 +39,4 @@ replay_*.log
 *.hprof
 *.jfr
 /.kotlin/sessions/kotlin-compiler-14281103738451913830.salive
+/.kotlin/sessions/kotlin-compiler-10240033807714813741.salive

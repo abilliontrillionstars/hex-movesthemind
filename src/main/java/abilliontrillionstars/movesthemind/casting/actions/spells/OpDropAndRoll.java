@@ -47,7 +47,7 @@ public class OpDropAndRoll implements SpellAction
         if(!FakeplayerUtils.canBid((ServerPlayer) caster, target))
             JavaMishapThrower.throwMishap(new MishapOthersName(target));
         return new SpellAction.Result(new OpDropAndRoll.Spell(target),
-                MediaConstants.DUST_UNIT,
+                MediaConstants.DUST_UNIT / 10,
                 List.of(ParticleSpray.burst(target.position().add(0.0, target.getEyeHeight() / 2.0, 0.0), 1.0, 10)),
                 1);
     }
@@ -72,7 +72,7 @@ public class OpDropAndRoll implements SpellAction
         {
             MinecraftServer server = target.getServer();
             CommandSourceStack sourceStack = server.createCommandSourceStack();
-            server.getCommands().performPrefixedCommand(sourceStack, "player "+FakeplayerUtils.getUsernameString(target)+" drop");
+            server.getCommands().performPrefixedCommand(sourceStack, "player "+FakeplayerUtils.getUsernameString(target)+" dropStack");
         }
 
         @Override

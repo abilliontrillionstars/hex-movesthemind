@@ -1,21 +1,19 @@
 package abilliontrillionstars.movesthemind.casting;
 
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
-import net.minecraft.server.MinecraftServer;
+import abilliontrillionstars.movesthemind.Movesthemind;
 import net.minecraft.server.level.ServerPlayer;
 
 public class FakeplayerUtils
 {
     public static boolean canBid(ServerPlayer caster, ServerPlayer target)
     {
-        String username = caster.getName().toString();
-        username = username.substring(username.indexOf('{')+1, username.length()-1);
-        String targetname = target.getName().toString();
-        targetname = targetname.substring(targetname.indexOf('{')+1, targetname.length()-1);
+        String username = getUsernameString(caster);
+        String targetname = getUsernameString(target);
         // let the owner of a fakeplayer control it TODO needs edited when adding polyamory
-        return getFakeName(username).equals(targetname)
-                // let a fakeplayer control itself
-                || getFakeName(targetname).equals(targetname);
+        if(getFakeName(username).equals(targetname) || getFakeName(username).toLowerCase().equals(targetname))
+            return true;
+        // let a fakeplayer (or real player) control itself
+        return caster.getStringUUID().equals(target.getStringUUID());
     }
 
     public static String getFakeName(String username)

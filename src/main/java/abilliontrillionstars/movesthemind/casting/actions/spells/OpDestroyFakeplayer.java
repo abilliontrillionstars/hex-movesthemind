@@ -19,6 +19,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -42,8 +43,18 @@ public class OpDestroyFakeplayer implements SpellAction
             JavaMishapThrower.throwMishap(new MishapBadCaster());
         if(!FakeplayerUtils.canBid((ServerPlayer) caster, player))
             JavaMishapThrower.throwMishap(new MishapOthersName(player));
+
+        if(caster.getStringUUID().equals(player.getStringUUID()) && caster.getClass() == ServerPlayer.class)
+        {
+            // easter egg joke advancement! I love modding.
+            MinecraftServer server = env.getWorld().getServer();
+            CommandSourceStack sourceStack = server.createCommandSourceStack().withSuppressedOutput();
+            server.getCommands().performPrefixedCommand(sourceStack, "advancement grant "+FakeplayerUtils.getUsernameString((ServerPlayer) caster)+" only minecraft:movesthemind/try_banish_self");
+
+            JavaMishapThrower.throwMishap(new MishapOthersName((ServerPlayer) caster));
+        }
         return new SpellAction.Result(new OpDestroyFakeplayer.Spell(player),
-                MediaConstants.DUST_UNIT,
+                MediaConstants.DUST_UNIT * 5,
                 List.of(ParticleSpray.burst(player.position().add(0.0, player.getEyeHeight() / 2.0, 0.0), 1.0, 10)),
                 1);
     }

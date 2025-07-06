@@ -2,28 +2,17 @@
 	"schemaVersion": 1,
 	"id": "movesthemind",
 	"version": "${version}",
-	"name": "movesthemind",
-	"description": "This is an example description! Tell everyone what your mod is about!",
-	"authors": [
-		"Me!"
-	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
+	"name": "Moves the Mind",
+	"description": "Interfaces Hex Casting with the carpet /player command with a slew of new patterns.",
+	"authors": ["just_laniakea"],
+	"contact": {"sources": "https://github.com/abilliontrillionstars/hex-movesthemind"},
 	"license": "CC0-1.0",
 	"icon": "assets/movesthemind/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-			"abilliontrillionstars.movesthemind.Movesthemind"
-		],
-		"client": [
-			"abilliontrillionstars.movesthemind.MovesthemindClient"
-		],
-		"fabric-datagen": [
-			"abilliontrillionstars.movesthemind.MovesthemindDataGenerator"
-		]
+		"main": ["abilliontrillionstars.movesthemind.Movesthemind"],
+		"client": ["abilliontrillionstars.movesthemind.MovesthemindClient"],
+		"fabric-datagen": ["abilliontrillionstars.movesthemind.MovesthemindDataGenerator"]
 	},
 	"mixins": [
 		"movesthemind.mixins.json",
@@ -36,9 +25,8 @@
 		"fabricloader": ">=0.16.14",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
+		"fabric-api": "*",
+		"carpet": "*",
+		"hexcasting": "*"
 	}
 }

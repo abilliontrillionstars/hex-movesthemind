@@ -46,7 +46,7 @@ public class OpJumpButWithYourFeet implements SpellAction
         if(!FakeplayerUtils.canBid((ServerPlayer) caster, target))
             JavaMishapThrower.throwMishap(new MishapOthersName(target));
         return new SpellAction.Result(new OpJumpButWithYourFeet.Spell(target),
-                MediaConstants.DUST_UNIT,
+                MediaConstants.DUST_UNIT / 10,
                 List.of(ParticleSpray.burst(target.position().add(0.0, target.getEyeHeight() / 2.0, 0.0), 1.0, 10)),
                 1);
     }

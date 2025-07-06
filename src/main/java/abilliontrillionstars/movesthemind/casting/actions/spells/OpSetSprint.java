@@ -48,7 +48,7 @@ public class OpSetSprint implements SpellAction
             JavaMishapThrower.throwMishap(new MishapOthersName(target));
         boolean doesSprint = OperatorUtils.getBool(args, 1, getArgc());
         return new SpellAction.Result(new OpSetSprint.Spell(target, doesSprint),
-                MediaConstants.DUST_UNIT,
+                MediaConstants.DUST_UNIT / 10,
                 List.of(ParticleSpray.burst(target.position().add(0.0, target.getEyeHeight() / 2.0, 0.0), 1.0, 10)),
                 1);
     }
