@@ -38,6 +38,6 @@
   "movesthemind.page.spells.move/drop": "指示假人丢下其主手持有的物品或物品组。甚至能让我手里的物品飞出去，这可太熟悉了。",
 
 
-  "advancement.movesthemind:try_banish_self" : "我不想再在这颗星球上待下去了",
-  "advancement.movesthemind:try_banish_self.desc" : "身为真正的玩家，对自身施放驱除假人。"
+  "advancement.movesthemind:try_banish_self": "我不想再在这颗星球上待下去了",
+  "advancement.movesthemind:try_banish_self.desc": "身为真正的玩家，对自身施放驱除假人。"
 }
