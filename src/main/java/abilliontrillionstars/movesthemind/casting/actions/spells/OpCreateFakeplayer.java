@@ -96,6 +96,16 @@ public class OpCreateFakeplayer implements SpellAction
             // set the origin of a player if it's installed (now suppressed from logs)
             if(FabricLoader.getInstance().isModLoaded("origins"))
                 server.getCommands().performPrefixedCommand(sourceStack.withSuppressedOutput(), "origin set "+name+" origins:origin origins:human");
+            // do the same for other lesser origins mods (thanks ashdew-derg!)
+            if(FabricLoader.getInstance().isModLoaded("tinkerers_statures"))
+                server.getCommands().performPrefixedCommand(sourceStack.withSuppressedOutput(), "origin set "+name+" origins:stature tinkerer:unaffected");
+            if(FabricLoader.getInstance().isModLoaded("origins-classes"))
+                server.getCommands().performPrefixedCommand(sourceStack.withSuppressedOutput(), "origin set "+name+" origins-classes:class origins-classes:nitwit");
+            if(FabricLoader.getInstance().isModLoaded("aspects"))
+            {
+                server.getCommands().performPrefixedCommand(sourceStack.withSuppressedOutput(), "origin set "+name+" aspects:elements aspects:vacuos");
+                server.getCommands().performPrefixedCommand(sourceStack.withSuppressedOutput(), "origin set "+name+" aspects:origins aspects:imp");
+            }
         }
         @Override
         public @Nullable CastingImage cast(@NotNull CastingEnvironment env, @NotNull CastingImage castingImage)
