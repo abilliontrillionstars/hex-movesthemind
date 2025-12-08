@@ -33,7 +33,7 @@
 
   "movesthemind.page.spells.move/use": "这对图案有意思。它们可让假人按所给间隔使用手持物品或用它攻击，间隔以 1/20 秒计。$(br)两者对我都有效，但前者的效果比较奇怪。",
   "movesthemind.page.spells.move/attack": "传入 0 会让其持续执行动作，如进食和三叉戟蓄力，攻击指示下则类似于挖掘。传入 -1，则使用或攻击一次即停止。",
-  "movesthemind.page.spells.move/hotbar": "接受一个 1 到 9 的数，包括 1 和 9，并指示假人选择其快捷栏中该槽位。对我也有效，但可能会打断绘制图案等事情。",
+  "movesthemind.page.spells.move/hotbar": "接受一个 1 到 9 的数，包括 1 和 9，并指示假人选择其快捷栏中该槽位。对我也有效，但可能会打断绘制图案等动作。",
   "movesthemind.page.spells.move/swap_hands": "指示假人将主手物品换至副手，反过来也行。和之前的一样，对我也有效。",
   "movesthemind.page.spells.move/drop": "指示假人丢下其主手持有的物品或物品组。甚至能让我手里的物品飞出去，这可太熟悉了。",
 
