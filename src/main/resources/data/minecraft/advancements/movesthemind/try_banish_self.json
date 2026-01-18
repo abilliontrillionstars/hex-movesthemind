@@ -9,7 +9,7 @@
       "translate": "advancement.movesthemind:try_banish_self.desc"
     },
     "frame": "task",
-    "hidden": false,
+    "hidden": true,
     "icon": {
       "item": "hexcasting:impetus/empty"
     },
