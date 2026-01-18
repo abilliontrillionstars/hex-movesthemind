@@ -4,7 +4,7 @@
       <title>Moves the Mind Book</title>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="description" content="Moves the Mind addon for Hex Casting, adding Carpetmod Fakeplayer interop." />
+      <meta name="description" content="Adds a suite of patterns for summoning and controlling player-like entities, provided by the Carpet mod." />
       <meta name="author" content="abilliontrillionstars" />
         <link rel="None" type="image/ico" href="favicon.ico" />
         <link rel="icon" type="image/png" href="favicon-16x16.png" />
@@ -32,7 +32,7 @@
 <meta property="og:title" content="Moves the Mind Book" />
 <meta property="og:image" content="https://abilliontrillionstars.github.io/hex-movesthemind/v/latest/main/en_us/icon.png" />
 <meta property="og:url" content="https://abilliontrillionstars.github.io/hex-movesthemind/v/latest/main/en_us" />
-<meta property="og:description" content="Moves the Mind addon for Hex Casting, adding Carpetmod Fakeplayer interop." />
+<meta property="og:description" content="Adds a suite of patterns for summoning and controlling player-like entities, provided by the Carpet mod." />
 <meta property="og:site_name" content="Moves the Mind (latest/main)" />
       <script src="https://code.jquery.com/jquery-1.12.4.min.js"
       integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
@@ -77,7 +77,7 @@
       <ul class="nav navbar-nav navbar-right">
             <li>
     <a
-      href="https://github.com/abilliontrillionstars/hex-movesthemind/tree/2cc9658e8af90dbc89f7873aba21284b23bec090"
+      href="https://github.com/abilliontrillionstars/hex-movesthemind/tree/f219e30706f98dec7283252cef3d17c7f94d7b11"
         target="_blank"
       class="navbar-link"
       role="button"
@@ -147,12 +147,12 @@
     > Spells</a></summary>
       <ul>
           <li><a href="#patterns/spells/dummy_spells" class="toc-elem "><img
-      title="Spruce Sign"
-      alt="Spruce Sign"
-      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.20.2/items/spruce_sign.png"
+      title="Player Head"
+      alt="Player Head"
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAElBMVEV5YVJqUkRbRThJNyxCMSc1KSLA3kmkAAAAd0lEQVR42gVAMRKEIAxcHa93gtcLgf4IoVfRB0DG/3/lBjENtqd7UNzn+5Uvej4XftqGU+jntCSM7A7X9ALL1jkHRbVIJc6M8grLuiQwl1v8mkAW6jV1QRUXzF0C8w9pYsOYOqnUCjpXd7cq+PgltmA7nJEOzccfetIW7VmI180AAAAASUVORK5CYII="
       loading="lazy"
       class="item-texture  texture pixelated"
-    > Dummy Spells</a></li>
+    > Carpet Player Manipulation</a></li>
       </ul>
     </details>
 </nav>
@@ -178,12 +178,12 @@
 <div id="patterns/spells/dummy_spells" class="entry">
     <h3 class="entry-title page-header">
     <img
-      title="Spruce Sign"
-      alt="Spruce Sign"
-      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.20.2/items/spruce_sign.png"
+      title="Player Head"
+      alt="Player Head"
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAElBMVEV5YVJqUkRbRThJNyxCMSc1KSLA3kmkAAAAd0lEQVR42gVAMRKEIAxcHa93gtcLgf4IoVfRB0DG/3/lBjENtqd7UNzn+5Uvej4XftqGU+jntCSM7A7X9ALL1jkHRbVIJc6M8grLuiQwl1v8mkAW6jV1QRUXzF0C8w9pYsOYOqnUCjpXd7cq+PgltmA7nJEOzccfetIW7VmI180AAAAASUVORK5CYII="
       loading="lazy"
       class="item-texture  texture pixelated"
-    >Dummy Spells<a
+    >Carpet Player Manipulation<a
     href="#table-of-contents"
     class="permalink small"
     title="Jump to top"
@@ -192,9 +192,11 @@
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h3>
-  <div id="patterns/spells/dummy_spells@movesthemind:congratulate" class="">
-<h4 class="pattern-title">Congratulate (entity →)<a
-    href="#patterns/spells/dummy_spells@movesthemind:congratulate"
+    <p>They appear like me, but their demeanor does not match. Familiarly, this--dare I say--creature, is distinctly unhuman. And yet, I can communicate with it; It&#39;s as if someone&#39;s cauterized all its inputs, save the signal to start its work. </p><p>And so that signal is what I shall give it. The following pages will refer to them as Bids. Most cost a tenth of a dust.</p>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:move/stopall" class="">
+<h4 class="pattern-title">Halt Creature (player →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:move/stopall"
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h4>
@@ -240,12 +242,740 @@
         class="spell-viz"
         width="216"
         height="216"
-        data-string="eed"
-        data-start="west"
+        data-string="edeaqqwqqwqq"
+        data-start="north_west"
         data-per-world="False"
-      >Your browser does not support visualizing patterns. Pattern code: eed</canvas>
+      >Your browser does not support visualizing patterns. Pattern code: edeaqqwqqwqq</canvas>
   </details>
-      <p>Remove an entity from the stack, then congratulate them.</p>
+      <p>An important signal! Stops actions being performed by the creature, continuous and otherwise. Conveniently, an exception to the cost rule facing this page; It&#39;s free to cast.</p>
+  </div>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:create" class="">
+<h4 class="pattern-title">Summon Creature (vec →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:create"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="edeaqqwwawwqq"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: edeaqqwwawwqq</canvas>
+  </details>
+      <p>Bids the creature to the given location. Costs a charged amethyst.</p>
+  </div>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:destroy" class="">
+<h4 class="pattern-title">Banish Creature (player →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:destroy"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="edeaqqwadawqq"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: edeaqqwadawqq</canvas>
+  </details>
+      <p>Banishes the creature, making it disappear until I call it back. One Shard.</p>
+  </div>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:move/walk" class="">
+<h4 class="pattern-title">Bid: Walking (player, num →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:move/walk"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="edeqd"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: edeqd</canvas>
+  </details>
+      <p>Instructs the creature to walk along its facing. A 1 beckons it forth, and a -1 backward. Interestingly, a 0 causes it to stop, as if I had halted it.</p>
+  </div>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:move/strafe" class="">
+<h4 class="pattern-title">Bid: Strafing (player, num →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:move/strafe"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="edewa"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: edewa</canvas>
+  </details>
+      <p>As previous, but along strafing. A 1, then, beckons it to the left, and a -1 to the right.</p>
+  </div>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:move/look" class="">
+<h4 class="pattern-title">Bid: Looking (player, vec →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:move/look"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="edeaqwa"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: edeaqwa</canvas>
+  </details>
+      <p>Instructs the creature to look in a direction. The vector can be of any length. Seems to work on myself in the eyes of Nature, even though I don&#39;t feel or see the change.</p>
+  </div>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:move/jump" class="">
+<h4 class="pattern-title">Bid: Jumping (player →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:move/jump"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="edeqda"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: edeqda</canvas>
+  </details>
+      <p>Simply instructs the creature to hop. Also works on myself.</p>
+  </div>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:move/sneak" class="">
+<h4 class="pattern-title">Bid: Sneaking (player, bool →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:move/sneak"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="edeade"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: edeade</canvas>
+  </details>
+      <p>Takes a boolean and tells the creature to start or stop sneaking. Also seems to work on myself, until my synapses kick in a moment after. Maybe it could be of use with other bids?</p>
+  </div>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:move/sprint" class="">
+<h4 class="pattern-title">Bid: Sprinting (player, bool →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:move/sprint"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="edeaqad"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: edeaqad</canvas>
+  </details>
+      <p>As previous, but with sprinting. Even when stationary, the creature produces sprinting particles to denote its intention.</p>
+  </div>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:move/use" class="">
+<h4 class="pattern-title">Bid: Use Item (player, num →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:move/use"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="edeaqwaaq"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: edeaqwaaq</canvas>
+  </details>
+      <p>Now, an interesting pair of instructions. Begin to use or attack with the held item at an interval, in twentieths of a second. <br />Both work on myself, though the former strangely.</p>
+  </div>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:move/attack" class="">
+<h4 class="pattern-title">Bid: Attack (player, num →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:move/attack"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="edeaqedde"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: edeaqedde</canvas>
+  </details>
+      <p>Given 0, uses it continuously, such as eating or channeling, or in the case of Attack, mining. Given -1, uses or attacks once and stops.</p>
+  </div>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:move/hotbar" class="">
+<h4 class="pattern-title">Bid: Select Toolbar (player, num →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:move/hotbar"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="edeawq"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: edeawq</canvas>
+  </details>
+      <p>Takes a number from 1 to 9 inclusive, and instructs to select that slot in its toolbar. Works on myself, but may interrupt things like drawing patterns.</p>
+  </div>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:move/swap_hands" class="">
+<h4 class="pattern-title">Bid: Swap Hands (player →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:move/swap_hands"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="edeawqa"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: edeawqa</canvas>
+  </details>
+      <p>Instructs the creature to hand its mainhand item into its offhand, and vice versa. As previous, in its function to myself.</p>
+  </div>
+<br />
+  <div id="patterns/spells/dummy_spells@movesthemind:move/drop" class="">
+<h4 class="pattern-title">Bid: Drop Item (player →)<a
+    href="#patterns/spells/dummy_spells@movesthemind:move/drop"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="edeaqe"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: edeaqe</canvas>
+  </details>
+      <p>Instructs the creature to drop the item or stack of items it holds in its main hand. Can even yank an item from my own hand, as I&#39;m so familiar with.</p>
   </div>
 <br />
 </div>
