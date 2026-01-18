@@ -1,4 +1,5 @@
 {
+  "parent": "hexcasting:root",
   "criteria": {
     "dummy": {"trigger": "minecraft:impossible"}
   },
